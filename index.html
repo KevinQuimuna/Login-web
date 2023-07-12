@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario de inicio de sesión</title>
+  <style>
+   body {
+    background-image: url("fondo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+  }
+
+  #login-container {
+    background-color: #669cee7e;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  #login-form {
+    margin-bottom: 20px;
+  }
+
+  .container {
+    width: calc(50% - 20px);
+    background-color: rgba(115, 167, 245, 0.623);
+    margin-bottom: 20px;
+    float: left;
+    margin-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    display: none;
+  }
+
+  .container img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  </style>
+  <script>
+    function mostrarContenedores() {
+      // Ocultar el formulario de inicio de sesión
+      document.getElementById("login-container").style.display = "none";
+
+      // Mostrar los contenedores
+      var contenedores = document.getElementsByClassName("container");
+      for (var i = 0; i < contenedores.length; i++) {
+        contenedores[i].style.display = "block";
+      }
+
+      // Obtener los datos del formulario
+      var usuario = document.getElementById("usuario").value;
+      var contrasena = document.getElementById("contrasena").value;
+
+      // Enviar los datos a la hoja de cálculo usando Apps Script
+      var url = "https://script.google.com/macros/s/AKfycbxvGLSig03IKWL3vwMnEx1t36gsrzAQeDNuyOglljYFKGQENIFXBrvYhfxngRUmcxgL/exec";
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", url);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.responseText);
+        }
+      };
+      xhr.send("usuario=" + encodeURIComponent(usuario) + "&contrasena=" + encodeURIComponent(contrasena));
+    }
+  </script>
+</head>
+<body>
+  <div id="login-container">
+    <h2>Iniciar sesión</h2>
+    <form id="login-form" action="#" method="post">
+      <label for="usuario">Usuario:</label>
+      <input type="text" id="usuario" name="usuario" required><br><br>
+
+      <label for="contrasena">Contraseña:</label>
+      <input type="password" id="contrasena" name="contrasena" required><br><br>
+
+      <input type="button" value="Iniciar sesión" onclick="mostrarContenedores()">
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="container">
+      <center><h2>Estilos avanzados</h2></center>
+      <p>CSS define otras propiedades específicas para el control del aspecto de las tablas. Una de ellas es el tratamiento que reciben las celdas vacías de una tabla, que se controla mediante la propiedad empty-cells. 
+      Esta propiedad sólo se aplica cuando el modelo de bordes de la tabla es de tipo separate.</p>
+      <center><img src="estilosavanzados.png" alt=""style="max-width: 275px; height: 200px;"></center>
+    </div>
+    <div class="container">
+      <center><h2>Inyección SQL</h2></center>
+      <p>La inyección de SQL es un tipo de ciberataque encubierto en el cual un hacker inserta código propio en un sitio web con el fin de quebrantar las medidas de seguridad y acceder a datos protegidos. Una vez dentro,
+           puede controlar la base de datos del sitio web y secuestrar la información de los usuarios.</p>
+      <center><img src="SQL-Injection-1.png" alt=""style="max-width: 275px; height: 200px;"></center>    
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="container">
+      <center><h2>Server-Side Request Forgery (SSRF)</h2></center>
+      <p>La falsificación de solicitudes del lado del servidor (también conocida como SSRF) es una vulnerabilidad de seguridad web que permite a un atacante inducir a la aplicación del lado del servidor
+           a realizar solicitudes a una ubicación no deseada.</p>
+      <center><img src="SSRF.png" alt="" style="max-width: 275px; height: 200px;"></center>
+    </div>
+    <div class="container">
+      <center><h2>Burp Suite</h2></center>
+      <p>Burp Proffessional es un software de pago desarrollado por la empresa PortSwigger. Incluye, además del proxy HTTP, algunas herramientas de pentesting web como: Escáner de diferentes tipos de 
+          vulnerabilidades web. Módulo Spider de detección de contenido indexado.</p>
+      <center><img src="Burpsuite.png" alt=""style="max-width: 275px; height: 200px;"></center>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="container">
+      <center><h2>Seguridad web</h2></center>
+      <p>La seguridad web consiste en cada acción o herramienta adoptada para evitar que las informaciones sean expuestas o propensas a ataques por parte de cibercriminales. Esas medidas también sirven para proteger a los usuarios, 
+          como los clientes de ecommerce y los lectores de blogs, e incluso al host.</p>
+      <center><img src="seguridad.png" alt=""style="max-width: 275px; height: 200px;"></center>
+    </div>
+    <div class="container">
+      <center><h2>Tipos de registro</h2></center>
+      <p>Tipos de registro DNS <br>
+          ★ A (Address), Registro de dirección. <br>
+          ★ AAAA (Address), Registro de dirección IPv6. <br>
+          ★ CAA (Certification Authority Authorization), Autorización de la Autoridad de Certificación. <br>
+          ★ CNAME (Canonical Name), Registro de nombre canónico. <br>
+          ★ MX (Mail eXchange), Registro de intercambio del correo.</p>
+      <center><img src="DNS.png" alt=""style="max-width: 275px; height: 250px;"></center>
+    </div>
+  </div>
+
+  <footer>
+    <p>Sígueme en mis redes sociales.</p>
+    <div>
+      <a href="https://www.facebook.com">
+        <img src="fb.png" alt="Facebook" style="width: 30px; height: 30px;">
+      </a>
+      <a href="https://www.instagram.com">
+        <img src="instagram.png" alt="Instagram" style="width: 30px; height: 30px;">
+      </a>
+      <a href="https://www.linkedin.com">
+        <img src="linkedin.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
